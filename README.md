@@ -60,7 +60,7 @@ Access the live demo here: [syntaxcinema.vercel.app](https://syntaxcinema.vercel
    ```bash
    git clone https://github.com/F4P1E/syntax-cinema-app.git
    cd syntax-cinema-app
-````
+    ```
 
 2. Install dependencies
 
@@ -146,6 +146,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 For questions, feedback, or support, please open an issue on GitHub or contact the maintainer:
 **Author**: [F4P1E](https://github.com/F4P1E)
-**Email**: [your-email@example.com](mailto:your-email@example.com)
+**Email**: [dongduong840@gmail.com](mailto:dongduong840@gmail.com)
 
 Thank you for using Syntax Cinema App!
