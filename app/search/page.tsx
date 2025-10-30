@@ -101,7 +101,7 @@ function SearchContent() {
               <div className="mb-8 flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold font-mono mb-1">RESULTS FOR "{initialQuery}"</h2>
-                  <p className="font-mono text-sm text-muted-foreground">{totalResults.toLocaleString()} FILMS FOUND</p>
+                  <p className="font-mono text-sm text-muted-foreground">{totalResults.toLocaleString("en-US")} FILMS FOUND</p>
                 </div>
                 <div className="font-mono text-sm text-muted-foreground">
                   PAGE {page} / {totalPages}

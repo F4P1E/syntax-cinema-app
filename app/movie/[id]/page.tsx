@@ -1,17 +1,17 @@
 "use client"
 
+import React, { useState, useEffect } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Bookmark, BookmarkCheck, Star, Clock, Calendar, Play, Loader2 } from "lucide-react"
-import { useState, useEffect } from "react"
 import type { MovieDetails } from "@/lib/tmdb-client"
 import { getBackdropUrl, getPosterUrl, getProfileUrl } from "@/lib/tmdb-client"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
-export default function MovieDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params
+export default function MovieDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params)
   const router = useRouter()
   const [movie, setMovie] = useState<MovieDetails | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -125,8 +125,9 @@ export default function MovieDetailPage({ params }: { params: { id: string } }) 
     )
   }
 
-  const director = movie.credits?.crew.find((c) => c.job === "Director")
-  const topCast = movie.credits?.cast.slice(0, 12) || []
+  // Safely access credits arrays - credits or the nested arrays may be undefined depending on API response
+  const director = movie.credits?.crew?.find((c) => c.job === "Director")
+  const topCast = movie.credits?.cast?.slice(0, 12) ?? []
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -309,11 +310,11 @@ export default function MovieDetailPage({ params }: { params: { id: string } }) 
               </div>
 
               {/* Production Companies */}
-              {movie.production_companies.length > 0 && (
+              {(movie.production_companies?.length ?? 0) > 0 && (
                 <div className="border-2 border-border bg-secondary p-6">
                   <h3 className="text-xl font-bold font-mono mb-4">PRODUCTION</h3>
                   <ul className="space-y-2 font-mono text-sm">
-                    {movie.production_companies.slice(0, 5).map((company) => (
+                    {movie.production_companies?.slice(0, 5).map((company) => (
                       <li key={company.id} className="text-muted-foreground">
                         {company.name}
                       </li>

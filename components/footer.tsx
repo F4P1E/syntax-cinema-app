@@ -1,6 +1,15 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import Link from "next/link"
 
 export function Footer() {
+  const [year, setYear] = useState<number | null>(null)
+
+  useEffect(() => {
+    setYear(new Date().getFullYear())
+  }, [])
+
   return (
     <footer className="border-t border-border bg-background mt-auto">
       <div className="container mx-auto px-4 py-8">
@@ -47,7 +56,9 @@ export function Footer() {
                 TMDb API
               </a>
             </p>
-            <p className="text-xs text-muted-foreground font-mono mt-4">© {new Date().getFullYear()} SYNTAX CINEMA</p>
+            <p className="text-xs text-muted-foreground font-mono mt-4">
+              © <span suppressHydrationWarning>{year ?? new Date().getFullYear()}</span> SYNTAX CINEMA
+            </p>
           </div>
         </div>
       </div>

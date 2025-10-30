@@ -23,8 +23,10 @@ export default function HomePage() {
     async function fetchTrending() {
       try {
         const response = await fetch("/api/tmdb/trending")
-        const data = await response.json()
-        setTrendingMovies(data.results.slice(0, 12))
+  const data = await response.json()
+  // Guard against unexpected API responses (e.g. error object) where results may be undefined
+  const results = data?.results ?? []
+  setTrendingMovies(results.slice(0, 12))
       } catch (error) {
         console.error("[v0] Failed to fetch trending movies:", error)
       } finally {
