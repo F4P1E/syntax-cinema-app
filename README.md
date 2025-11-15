@@ -147,5 +147,3 @@ This project is licensed under the [MIT License](LICENSE).
 For questions, feedback, or support, please open an issue on GitHub or contact the maintainer:
 **Author**: [F4P1E](https://github.com/F4P1E)
 **Email**: [dongduong840@gmail.com](mailto:dongduong840@gmail.com)
-
-Thank you for using Syntax Cinema App!
